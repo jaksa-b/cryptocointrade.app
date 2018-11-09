@@ -3,9 +3,13 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
+import { configure } from 'mobx';
 import { Provider } from 'mobx-react';
 import { createStores } from './stores';
 import { createBrowserHistory } from 'history';
+
+// enable MobX strict mode
+configure({ enforceActions: 'observed' });
 
 // prepare MobX stores
 const history = createBrowserHistory();
