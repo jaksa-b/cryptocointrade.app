@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
-import { Router, Route, Switch } from 'react-router';
+import { Router, Route, Switch, Redirect } from 'react-router';
 import PublicLayout from './components/Layouts/PublicLayout'; 
-import Home from './pages/Home';
 import Trade from './pages/Trade';
 import Wallet from './pages/Wallet';
 
@@ -18,9 +17,9 @@ class App extends Component<any> {
       <div className="App">
         <Router history={history}>
           <Switch>
-            <Route path="/" exact component={Home} />
+            <Route path="/" exact component={() => <Redirect to={{pathname: '/trade'}} />} />
             <PublicLayout path="/trade" component={Trade} />
-            <PublicLayout path="/trade" component={Wallet} />
+            <PublicLayout path="/wallet" component={Wallet} />
           </Switch>
         </Router>
         {this.renderDevTool()}
