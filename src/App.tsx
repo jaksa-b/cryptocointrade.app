@@ -18,7 +18,7 @@ class App extends Component<any> {
         <Router history={history}>
           <Switch>
             <Route path="/" exact component={() => <Redirect to={{pathname: '/trade'}} />} />
-            <PublicLayout path="/trade" component={Trade} />
+            <Route path="/trade" component={Trade} />
             <PublicLayout path="/wallet" component={Wallet} />
           </Switch>
         </Router>
