@@ -89,8 +89,12 @@ type MenuItemProps = {
 }
 
 export const MenuItem = styled<MenuItemProps, 'a'>('a')`
-  position: relative;
   display: flex;
+  cursor: pointer;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+  height: 45px;
   font-size: 12px;
   font-weight: bold;
   color: rgb(255, 255, 255);
