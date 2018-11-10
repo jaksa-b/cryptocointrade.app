@@ -1,23 +1,25 @@
 import React, { Component } from 'react'
-import styled from 'styled-components';
+import { Button, Nav, Grid, Logo, Col, Menu, MenuItem, ColSpace } from './index'
 
 class Header extends Component {
   render() {
     return (
       <Nav>
-        <div>logo</div>
-        links
+        <Grid>
+          <Col>
+            <Logo>Crypto Coin Trade</Logo>
+          </Col>
+          <Col>
+            <Menu>
+              <MenuItem active>Trade</MenuItem>
+            </Menu>
+          </Col>
+          <Col empty></Col>
+          <Col><Button wide>Sign in</Button></Col>
+        </Grid>
       </Nav>
     )
   }
 }
-
-const Nav = styled.nav`
-  position: relative;
-  height: 46px;
-  color: rgb(255, 255, 255);
-  background-color: rgb(25, 33, 38);
-  border-bottom: 1px solid rgb(20, 24, 28);
-`
 
 export default Header;
