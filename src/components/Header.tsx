@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Button, Nav, Grid, Logo, Col, Menu, MenuItem } from './index'
+import { Button, Nav, Grid, Logo, Col, Menu, MenuItem } from './elements'
 
 class Header extends Component {
   render() {
