@@ -27,14 +27,11 @@ export const Button = styled<Props, 'button'>('button')`
   border-color: rgba(255, 255, 255, 0.4);
   border-image: initial;
   background: rgb(21, 35, 44);
-  ${(props) => 
-    props.wide &&
-    css`
+  ${(props) => props.wide && css`
       margin-right: 10px;
       flex: 0 1 0%;
       padding: 0px 40px;
-    `
-  }
+  `}
 `
 
 export const Nav = styled.nav`
@@ -61,12 +58,9 @@ type CollProps = {
 export const Col = styled<CollProps, 'div'>('div')`
   display: flex;
   flex-direction: row;
-  ${(props) => 
-    props.empty &&
-    css`
+  ${(props) => props.empty && css`
       flex: 1 1 auto;
-    `
-  }
+  `}
 `
 
 export const ColSpace = styled.div`
@@ -102,12 +96,9 @@ export const MenuItem = styled<MenuItemProps, 'a'>('a')`
   text-decoration: none;
   border-left: 1px solid rgb(20, 24, 28);
   border-right: 1px solid rgb(20, 24, 28);
-  ${(props) =>
-    props.active && 
-    css`
+  ${(props) => props.active && css`
       border-bottom: 2px solid rgb(49, 121, 205);
-    `
-  }
+  `}
 `
 
 export const Text = styled.div`
