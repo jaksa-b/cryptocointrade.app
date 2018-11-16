@@ -1,5 +1,5 @@
 import { observable, computed, action, flow } from 'mobx';
-import { TradeModel } from '../models/TradeModel';
+import { TradeModel } from './models/TradeModel';
 
 interface Order {
   BTC: number,
