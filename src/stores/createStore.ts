@@ -1,13 +1,12 @@
 import { History } from 'history';
+import { AppStore } from './AppStore';
 import { TradeStore } from './TradeStore';
 import { RouterStore } from './RouterStore';
-import { STORE_TRADE, STORE_ROUTER } from '../constants';
 
 export function createStores(history: History) {
-  const tradeStore = new TradeStore([])
-  const routerStore = new RouterStore(history);
   return {
-    [STORE_TRADE]: tradeStore,
-    [STORE_ROUTER]: routerStore
+    app: new AppStore(),
+    trade: new TradeStore([]),
+    router: new RouterStore(history)
   };
 }

@@ -1,14 +1,11 @@
 import React, { Component } from 'react'
 import { inject, observer } from 'mobx-react';
-import { TradeStore, RouterStore } from '../stores';
-import {
-  STORE_TRADE,
-  STORE_ROUTER,
-} from '../constants';
+import { TradeStore, RouterStore, AppStore } from '../stores';
 
 interface HomeProps {
-  [STORE_ROUTER]: RouterStore,
-  [STORE_TRADE]: TradeStore;
+  router: RouterStore,
+  trade: TradeStore,
+  app: AppStore
 }
 
 interface HomeState {}
@@ -18,23 +15,13 @@ class Home extends Component<HomeProps, HomeState> {
     super(props);
   }
   getData = () => {
-    const tradeStore = this.props[STORE_TRADE] as TradeStore;
+    const tradeStore = this.props.trade;
     tradeStore.getData();
   }
-  changeTheme = (event: any) => {
-    const tradeStore = this.props[STORE_TRADE] as TradeStore;
-    tradeStore.switchTheme(event.target.value);
-  }
   render() {
-    console.log(this.props)
     return (
       <div>
         Home
-        <select onChange={this.changeTheme}>
-          <option value="classic">classic</option>
-          <option value="dark">dark</option>
-          <option value="light">light</option>
-        </select>
         <button onClick={this.getData}>getData</button>
       </div>
     )
@@ -42,6 +29,7 @@ class Home extends Component<HomeProps, HomeState> {
 }
 
 export default inject(
-  STORE_TRADE,
-  STORE_ROUTER
+  'app',
+  'trade',
+  'router'
 )(observer(Home));

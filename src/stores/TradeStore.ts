@@ -1,9 +1,6 @@
 import { observable, computed, action, flow } from 'mobx';
 import { TradeModel } from './models/TradeModel';
 
-//config
-import themes from '../styles/themes';
-
 interface Order {
   BTC: number,
   USD: number,
@@ -22,7 +19,6 @@ export class TradeStore {
   }
 
   /* Observables */
-  @observable themeName: string = 'classic';
   @observable public trades: Array<TradeModel>;
   @observable public tradeHistory: Array<TradeModel>;
   @observable public tradeOrders: Order;
@@ -37,21 +33,6 @@ export class TradeStore {
   @action
   addTrade = (item: TradeModel): void => {
     this.trades.push(new TradeModel(item.text, item.completed));
-  };
-
-  @action
-  resetAllSettings = () => {
-    this.themeName = 'classic';
-  };
-
-  @computed
-  get theme(): Object {
-    return themes[this.themeName];
-  }
-
-  @action
-  switchTheme = (name: string) => {
-    this.themeName = name
   };
 
   @action

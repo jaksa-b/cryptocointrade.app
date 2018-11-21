@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
 import { Router, Switch } from 'react-router';
 import { ThemeProvider } from 'styled-components';
-
 import { inject, observer } from 'mobx-react';
 
-import themes from './styles/themes'
-
+// layout
 import PublicLayout from './components/Layouts/PublicLayout';
+
+// pages
 import Home from './pages/Home';
 import Trade from './pages/Trade';
 import Wallet from './pages/Wallet';
@@ -19,10 +19,9 @@ class App extends Component<any> {
     }
   }
   render() {
-    const { history, trade } = this.props;
-    console.log(this.props)
+    const { history, app } = this.props;
     return (
-      <ThemeProvider theme={trade.theme}>
+      <ThemeProvider theme={app.theme}>
         <div className="App">
           <Router history={history}>
             <Switch>
@@ -40,6 +39,5 @@ class App extends Component<any> {
 
 
 export default inject(
-  'trade',
-  'router'
+  'app',
 )(observer(App));

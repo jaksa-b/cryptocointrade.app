@@ -1,9 +1,22 @@
 import React, { Component } from 'react'
 import styled from 'styled-components';
+import { inject, observer } from 'mobx-react';
+import { AppStore } from '../stores'
 import { Grid, Col } from './elements';
 
-export default class Bottom extends Component {
+interface Props {
+  app: AppStore
+}
+
+interface State {}
+
+class Bottom extends Component<any> {
+  changeTheme = (e: React.ChangeEvent<HTMLSelectElement>) => {
+    const appStore = this.props.app;
+    appStore.switchTheme(e.target.value);
+  }
   render() {
+    console.log(this.props)
     return (
       <Footer>
         <Grid>
@@ -12,7 +25,7 @@ export default class Bottom extends Component {
           </Col>
           <Col empty></Col>
           <Col>
-            <select>
+            <select onChange={this.changeTheme}>
               <option value="classic">classic</option>
               <option value="dark">dark</option>
               <option value="light">light</option>
@@ -30,3 +43,4 @@ const Footer = styled.div`
   border-top: 1px solid ${p => p.theme.border};
   background: ${p => p.theme.headerBgColor};
 `
+export default inject('app')(observer(Bottom));
