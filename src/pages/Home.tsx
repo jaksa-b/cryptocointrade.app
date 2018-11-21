@@ -8,7 +8,7 @@ interface HomeProps {
   app: AppStore
 }
 
-interface HomeState {}
+interface HomeState { }
 
 class Home extends Component<HomeProps, HomeState> {
   constructor(props: HomeProps) {
@@ -21,8 +21,7 @@ class Home extends Component<HomeProps, HomeState> {
   render() {
     return (
       <div>
-        Home
-        <button onClick={this.getData}>getData</button>
+        home
       </div>
     )
   }

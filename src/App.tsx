@@ -7,7 +7,6 @@ import { inject, observer } from 'mobx-react';
 import PublicLayout from './components/Layouts/PublicLayout';
 
 // pages
-import Home from './pages/Home';
 import Trade from './pages/Trade';
 import Wallet from './pages/Wallet';
 
@@ -25,8 +24,7 @@ class App extends Component<any> {
         <div className="App">
           <Router history={history}>
             <Switch>
-              <PublicLayout path="/" exact component={Home} />
-              <PublicLayout path="/trade" component={Trade} />
+              <PublicLayout path="/" exact component={Trade} />
               <PublicLayout path="/wallet" component={Wallet} />
             </Switch>
           </Router>
