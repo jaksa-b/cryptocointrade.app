@@ -27,6 +27,6 @@ export default class Bottom extends Component {
 const Footer = styled.div`
   position: relative;
   height: 30px;
-  border-top: 1px solid rgb(20, 24, 28);
-  background: rgb(25, 33, 38);
+  border-top: 1px solid ${p => p.theme.border};
+  background: ${p => p.theme.headerBgColor};
 `

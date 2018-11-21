@@ -18,11 +18,11 @@ export const MenuItem = styled<MenuItemProps, 'a'>('a')`
   height: 45px;
   font-size: 12px;
   font-weight: bold;
-  color: rgb(255, 255, 255);
+  color: ${p => p.theme.color};
   padding: 0px 28px;
   text-decoration: none;
-  border-left: 1px solid rgb(20, 24, 28);
-  border-right: 1px solid rgb(20, 24, 28);
+  border-left: 1px solid ${p => p.theme.border};
+  border-right: 1px solid ${p => p.theme.border};
   ${(props) => props.active && css`
       border-bottom: 2px solid rgb(49, 121, 205);
   `}
