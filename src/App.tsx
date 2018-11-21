@@ -1,6 +1,13 @@
 import React, { Component } from 'react';
-import { Router, Route, Switch, Redirect } from 'react-router';
-import PublicLayout from './components/Layouts/PublicLayout'; 
+import { Router, Switch } from 'react-router';
+import { ThemeProvider } from 'styled-components';
+
+import { inject, observer } from 'mobx-react';
+
+import themes from './styles/themes'
+
+import PublicLayout from './components/Layouts/PublicLayout';
+import Home from './pages/Home';
 import Trade from './pages/Trade';
 import Wallet from './pages/Wallet';
 
@@ -12,20 +19,27 @@ class App extends Component<any> {
     }
   }
   render() {
-    const { history } = this.props;
+    const { history, trade } = this.props;
+    console.log(this.props)
     return (
-      <div className="App">
-        <Router history={history}>
-          <Switch>
-            <Route path="/" exact component={() => <Redirect to={{pathname: '/trade'}} />} />
-            <PublicLayout path="/trade" component={Trade} />
-            <PublicLayout path="/wallet" component={Wallet} />
-          </Switch>
-        </Router>
-        {this.renderDevTool()}
-      </div>
+      <ThemeProvider theme={trade.theme}>
+        <div className="App">
+          <Router history={history}>
+            <Switch>
+              <PublicLayout path="/" exact component={Home} />
+              <PublicLayout path="/trade" component={Trade} />
+              <PublicLayout path="/wallet" component={Wallet} />
+            </Switch>
+          </Router>
+          {this.renderDevTool()}
+        </div>
+      </ThemeProvider>
     );
   }
 }
 
-export default App;
+
+export default inject(
+  'trade',
+  'router'
+)(observer(App));

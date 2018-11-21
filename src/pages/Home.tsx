@@ -7,7 +7,6 @@ import {
 } from '../constants';
 
 interface HomeProps {
-  /** MobX Stores will be injected via @inject() **/
   [STORE_ROUTER]: RouterStore,
   [STORE_TRADE]: TradeStore;
 }
@@ -22,11 +21,20 @@ class Home extends Component<HomeProps, HomeState> {
     const tradeStore = this.props[STORE_TRADE] as TradeStore;
     tradeStore.getData();
   }
+  changeTheme = (event: any) => {
+    const tradeStore = this.props[STORE_TRADE] as TradeStore;
+    tradeStore.switchTheme(event.target.value);
+  }
   render() {
     console.log(this.props)
     return (
       <div>
         Home
+        <select onChange={this.changeTheme}>
+          <option value="classic">classic</option>
+          <option value="dark">dark</option>
+          <option value="light">light</option>
+        </select>
         <button onClick={this.getData}>getData</button>
       </div>
     )
