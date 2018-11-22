@@ -27,6 +27,7 @@ const Layout = styled<any, 'div'>('div')`
   background-color: ${p => p.theme.backgroundColor};
 `
 const Main = styled.div`
+  display: flex;
   flex-direction: column;
   flex: 1 1 0%;
   overflow: hidden;

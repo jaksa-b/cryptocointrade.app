@@ -1,8 +1,10 @@
 import React, { Component } from 'react'
 import { inject, observer } from 'mobx-react';
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
 import { TradeStore, RouterStore, AppStore } from '../stores';
-import { Grid, Col } from '../components/elements'
+import { Grid, Col, Card } from '../components/elements'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faAngleDown } from '@fortawesome/free-solid-svg-icons';
 
 interface Props {
   router: RouterStore,
@@ -22,32 +24,96 @@ class Trade extends Component<Props, State> {
   }
   render() {
     return (
-      <div>
+      <>
         <TradeHeader>
           <Grid>
             <Col>
               <TradeCurrency>
                 <Section><Text>BTC-EUR</Text></Section>
-                <Section><Span>Select Market </Span></Section>
+                <Section><Span>Select Market <FontAwesomeIcon icon={faAngleDown} /> </Span></Section>
               </TradeCurrency>
             </Col>
             <Col>
               <CurrentPrice>
-                <Section><Text>3,919.87 EUR</Text> <Small>Last trade price</Small></Section>
-                <Section><Text>-4.52%</Text> <Small>24h price</Small></Section>
-                <Section><Text>5,417 BTC</Text> <Small>24h volume</Small></Section>
+                <Section><Text>3,919.87 EUR</Text><Small>Last trade price</Small></Section>
+                <Section><Text>-4.52%</Text><Small>24h price</Small></Section>
+                <Section><Text>5,417 BTC</Text><Small>24h volume</Small></Section>
               </CurrentPrice>
             </Col>
             <Col empty></Col>
           </Grid>
         </TradeHeader>
         <TradeBody>
-          <button onClick={this.getData}>getData</button>
+          <TradeGrid>
+            <Sidebar>
+              <Card title="Wallet Balance" />
+            </Sidebar>
+            <OrderBook>
+              <Card title="Order Book" />
+            </OrderBook>
+            <Chart>
+              <Card title="Price Chart" />
+            </Chart>
+            <Trading>
+              <Card title="Open Orders" />
+            </Trading>
+            <TradingHistory>
+              <Card title="Trade History" />
+            </TradingHistory>
+          </TradeGrid>
         </TradeBody>
-      </div>
+      </>
     )
   }
 }
+
+const TradeGrid = styled.div`
+  display: grid;
+  min-width: 0px;
+  min-height: 0px;
+  grid-template-columns: 279px 300px 1fr 285px;
+  grid-template-rows: 1fr 1fr 280px;
+  grid-template-areas: "sidebar order-book chart trade-history" "sidebar order-book chart trade-history" "sidebar order-book trading trade-history";
+  flex: 1 1 0%;
+  overflow: hidden;
+  gap: 1px 1px;
+  background: rgb(20, 24, 28);
+`
+
+const Sidebar = styled.div.attrs({ name: 'sidebar' })`
+  display: flex;
+  min-width: 0px;
+  min-height: 0px;
+  grid-area: sidebar / sidebar / sidebar / sidebar;
+` as any
+
+const OrderBook = styled.div.attrs({ name: 'order-book' })`
+  display: flex;
+  min-width: 0px;
+  min-height: 0px;
+  grid-area: order-book / order-book / order-book / order-book;
+`as any
+
+const Chart = styled.div.attrs({ name: 'chart' })`
+  display: flex;
+  min-width: 0px;
+  min-height: 0px;
+  grid-area: chart / chart / chart / chart;
+`as any
+
+const Trading = styled.div.attrs({ name: 'trading' })`
+  display: flex;
+  min-width: 0px;
+  min-height: 0px;
+  grid-area: trading / trading / trading / trading;
+`as any
+
+const TradingHistory = styled.div.attrs({ name: 'trade-history' })`
+  display: flex;
+  min-width: 0px;
+  min-height: 0px;
+  grid-area: trade-history / trade-history / trade-history / trade-history;
+`as any
 
 const TradeHeader = styled.div`
   position: relative;
@@ -57,6 +123,13 @@ const TradeHeader = styled.div`
   height: 46px;
   border-bottom: 1px solid ${p => p.theme.border};
   background: ${p => p.theme.headerBgColor};
+`
+
+const TradeBody = styled.div`
+  display: flex;
+  flex-direction: row;
+  flex: 1 1 0%;
+  overflow: hidden;
 `
 
 const Text = styled.span`
@@ -125,13 +198,6 @@ const Small = styled.small`
   color: rgba(255, 255, 255, 0.4);
 `
 
-
-const TradeBody = styled.div`
-  display: flex;
-  flex-direction: row;
-  flex: 1 1 0%;
-  overflow: hidden;
-`
 export default inject(
   'app',
   'trade',

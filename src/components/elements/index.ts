@@ -4,3 +4,4 @@ export * from './Grid';
 export * from './Col';
 export * from './Logo';
 export * from './Menu';
+export * from './Card';
