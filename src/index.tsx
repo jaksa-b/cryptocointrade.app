@@ -15,6 +15,12 @@ import * as serviceWorker from './serviceWorker';
 // enable MobX strict mode
 configure({ enforceActions: 'observed' });
 
+// initialize google analytics
+if (process.env.production) {
+  const ReactGA = require('react-ga');
+  ReactGA.initialize(process.env.REACT_APP_GOOGLE_ANALYTICS_KEY);
+}
+
 // prepare MobX stores
 const history = createBrowserHistory();
 const rootStore = createStores(history);
