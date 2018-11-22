@@ -77,7 +77,7 @@ const TradeGrid = styled.div`
   flex: 1 1 0%;
   overflow: hidden;
   gap: 1px 1px;
-  background: rgb(20, 24, 28);
+  background: ${p => p.theme.border};
 `
 
 const Sidebar = styled.div.attrs({ name: 'sidebar' })`
@@ -174,7 +174,7 @@ const TradeCurrency = styled.div`
   height: 46px;
   position: relative;
   color: ${p => p.theme.color};
-  width: 224px;
+  width: 223px;
   border-right: 1px solid ${p => p.theme.border};
   padding: 0px 28px;
 `
