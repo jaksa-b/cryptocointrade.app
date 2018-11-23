@@ -16,7 +16,7 @@ import * as serviceWorker from './serviceWorker';
 configure({ enforceActions: 'observed' });
 
 // initialize google analytics
-if (process.env.production) {
+if (process.env.NODE_ENV === 'production') {
   const ReactGA = require('react-ga');
   ReactGA.initialize(process.env.REACT_APP_GOOGLE_ANALYTICS_KEY);
 }
