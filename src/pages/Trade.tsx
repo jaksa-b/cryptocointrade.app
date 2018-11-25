@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { inject, observer } from 'mobx-react';
-import styled, { css } from 'styled-components'
+import styled from 'styled-components'
 import { TradeStore, RouterStore, AppStore } from '../stores';
 import { Grid, Col, Card } from '../components/elements'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
@@ -46,7 +46,16 @@ class Trade extends Component<Props, State> {
         <TradeBody>
           <TradeGrid>
             <Sidebar>
-              <Card title="Wallet Balance" />
+              <Card
+                title="Wallet Balance"
+                options={{
+                  header: {
+                    type: 'secondary'
+                  },
+                  subHeader: {
+                    type: 'secondary'
+                  }
+                }} />
             </Sidebar>
             <OrderBook>
               <Card title="Order Book" />
