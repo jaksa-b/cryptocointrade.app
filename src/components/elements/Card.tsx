@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { ReactNode } from 'react'
 import styled from 'styled-components'
 
 interface Props {
@@ -11,7 +11,7 @@ interface Props {
       type: string
     }
   },
-  children?: React.ReactChildren
+  children?: ReactNode
 }
 
 const initialOptions = {

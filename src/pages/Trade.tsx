@@ -46,16 +46,23 @@ class Trade extends Component<Props, State> {
         <TradeBody>
           <TradeGrid>
             <Sidebar>
-              <Card
-                title="Wallet Balance"
-                options={{
-                  header: {
-                    type: 'secondary'
-                  },
-                  subHeader: {
-                    type: 'secondary'
-                  }
-                }} />
+              <Container>
+                <Card
+                  title="Wallet Balance"
+                  options={{
+                    header: {
+                      type: 'secondary'
+                    },
+                    subHeader: {
+                      type: 'secondary'
+                    }
+                  }}>
+                  <div>dsa</div>
+                </Card>
+                <Card title="Order Form">
+                  <form action=""> form</form>
+                </Card>
+              </Container>
             </Sidebar>
             <OrderBook>
               <Card title="Order Book" />
@@ -75,6 +82,16 @@ class Trade extends Component<Props, State> {
     )
   }
 }
+
+const Container = styled.div`
+  position: relative;
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  max-width: 100%;
+  min-height: 0px;
+  flex: 1 1 0%;
+`
 
 const TradeGrid = styled.div`
   display: grid;
